@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Urbanist } from "next/font/google";
-import Footer from "@/app/components/footer";
-import Navbar from "@/app/components/navbar";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${urbanist.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body>
         <Navbar />
         {children}
         <Footer />

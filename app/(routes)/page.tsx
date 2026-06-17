@@ -1,8 +1,17 @@
-const HomePage = () => {
+import Billboard from "@/components/billboard";
+import Container from "@/components/ui/container";
+import getBillboard from "@/actions/get-billboard";
+
+export const revalidate = 0;
+
+const HomePage = async () => {
+  const billboard = await getBillboard("cmq767qpu0000agetgzcm4cwm");
   return (
-    <div>
-      <h1>Hello store</h1>
-    </div>
+    <Container>
+      <div className="space-y-10 pb-10">
+        <Billboard data={billboard} />
+      </div>
+    </Container>
   );
 };
 

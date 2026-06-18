@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${urbanist.className} h-full antialiased`}>
+    <html lang="en" className={`${urbanist.className}`}>
       <body>
         <Navbar />
         {children}

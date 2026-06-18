@@ -14,3 +14,9 @@ body,
   --font-sans: var(--font-urbanist);
   --font-heading: var(--font-urbanist);
 }
+
+@layer base {
+  * {
+    border-color: var(--color-gray-200);
+  }
+}

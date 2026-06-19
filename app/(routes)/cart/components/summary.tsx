@@ -16,12 +16,16 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success("Order placed successfully!");
+      toast.success(
+        items.length > 1
+          ? "Orders placed successfully!"
+          : "Order placed successfully!"
+      );
       removeAll();
     }
 
     if (searchParams.get("canceled")) {
-      toast.error("Order canceled!");
+      toast.error(items.length > 1 ? "Orders canceled!" : "Order canceled!");
     }
   }, [searchParams, removeAll]);
 
@@ -34,6 +38,7 @@ const Summary = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: items.map((item) => item.id),
+        email: "test@example.com",
       }
     );
 

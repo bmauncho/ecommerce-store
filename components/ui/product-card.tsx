@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const cart = useCart();
   const previewModal = usePreviewModal();
   const router = useRouter();
-  
+
   const handleClick = () => {
     // TODO: Handle click
     router.push(`/product/${data?.id}`);
@@ -48,6 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           fill
           alt="Image"
           className="aspect-square object-cover rounded-md"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">

@@ -19,6 +19,7 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ image }) => {
               src={image.url}
               alt=""
               className="object-cover object-center"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           </span>
           <span

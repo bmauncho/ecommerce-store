@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -12,22 +12,28 @@ const Summary = () => {
   const searchParams = useSearchParams();
 
   const items = useCart((state) => state.items);
-  const removeAll = useCart((state) => state.removeAll);
+  //const removeAll = useCart((state) => state.removeAll);
+  const removeAllRef = useRef(() => useCart.getState().removeAll());
+  const hasHandledRef = useRef(false);
 
   useEffect(() => {
+    if (hasHandledRef.current) return;
+
     if (searchParams.get("success")) {
+      hasHandledRef.current = true;
       toast.success(
         items.length > 1
           ? "Orders placed successfully!"
           : "Order placed successfully!"
       );
-      removeAll();
+      removeAllRef.current();
     }
 
     if (searchParams.get("canceled")) {
+      hasHandledRef.current = true;
       toast.error(items.length > 1 ? "Orders canceled!" : "Order canceled!");
     }
-  }, [searchParams, removeAll]);
+  }, [searchParams]);
 
   const totalPrice = items.reduce((total, item) => {
     return total + Number(item.price);
@@ -39,6 +45,8 @@ const Summary = () => {
       {
         productIds: items.map((item) => item.id),
         email: "test@example.com",
+        phone: "08012345678",
+        address: "123 Main Street, Lagos",
       }
     );
 
